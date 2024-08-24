@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Movie Website</title>
-    <link rel="stylesheet" href="style.css">
+     <!--  CSS -->
+      <link rel="stylesheet" href="./css/shared/general.css">
+      <link rel="stylesheet" href="./css/header.css">
+      <link rel="stylesheet" href="./css/home.css">
+        <!-- Swiper CSS -->
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
     <!-- Navbar  -->
@@ -13,7 +18,10 @@
       </a>
       <div class="bx bx-menu" id="menu-icon"></div>
       <!--search bar-->
-      <input type="text" class="serch-input"placholder="search">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search for a movie">
+        <button class="btn-search">Search</button>
+      </div>
       <!-- menu  -->
       <ul class="navbar">
           <li><a href="#home" class="home-active">Home</a></li>
@@ -28,7 +36,7 @@
    <section class="home swiper" id="home">
     <div class="swiper-wrapper">
         <div class="swiper-slide container">
-            <img src="./img/home1.jpg" alt="">
+            <img src="./imgs/Guardians of the Galaxy Volume.jpg" alt="">
             <div class="home-text">
                 <span>Marvel Universe</span>
                 <h1>Guardians of the Galaxy <br>Volume 2</h1>
@@ -39,7 +47,7 @@
             </div>
         </div>
         <div class="swiper-slide container">
-            <img src="./img/home2.png" alt="">
+            <img src="./imgs/Thor Love and Thunder.png" alt="">
             <div class="home-text">
                 <span>Marvel Universe</span>
                 <h1>Thor: <br>Love and Thunder</h1>
@@ -50,7 +58,7 @@
             </div>
         </div>
         <div class="swiper-slide container">
-            <img src="./img/home3.jpg" alt="">
+            <img src="./imgs/Spider-Man No Way Home.jpg" alt="">
             <div class="home-text">
                 <span>Marvel Universe</span>
                 <h1>Spider-Man <br>No Way Home</h1>
@@ -61,7 +69,7 @@
             </div>
         </div>
         <div class="swiper-slide container">
-            <img src="./img/home4.png" alt="">
+            <img src="./imgs/Avengers End Game.png" alt="">
             <div class="home-text">
                 <span>Marvel Universe</span>
                 <h1>Avengers: <br>End Game</h1>
@@ -75,3 +83,19 @@
       </div>
       <div class="swiper-pagination"></div>
 </section>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+    const swiper = new Swiper('.swiper', {
+        loop: true, // Enable loop mode
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000, // Autoplay every 5 seconds
+            disableOnInteraction: false,
+        },
+    });
+</script>
