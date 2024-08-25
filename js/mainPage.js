@@ -1,4 +1,5 @@
 import {movieList ,createMovieList} from "./data/movieData.js";
+import { Movie } from "./entities/movie.js";
 
 
 // Function to render movies
@@ -10,7 +11,7 @@ function renderMoviesinHomeSection() {
     const newMovies = movieList
         .filter(movie => movie.year > 2022 )
         .sort((a, b) => b.year - a.year)
-        .slice(0, 10); // Get only the first five movies
+        .slice(0, 5); // Get only the first five movies
 
    newMovies.forEach(movie => {
     html+= ` 
@@ -31,26 +32,28 @@ function renderAllMoviesinSection() {
 
   let html = '';
 
-  // Filter and sort movies by year, then take the first five
-  const newMovies = movieList
-      .filter(movie => movie.year > 2022 )
-      .sort((a, b) => b.year - a.year)
-      .slice(0, 10); // Get only the first five movies
+    movieList.slice(0, 30).forEach(movie => {
+      html+= ` 
+     <div class="box">
+            <img src="${movie.image}" alt="" />
 
- newMovies.forEach(movie => {
-  html+= ` 
-    <div class="swiper-slide container ">
+            <div class="caption">
+            <div class="mainInfo">
+            <h4>${movie.name}</h4>
+            <p> Type : <span>${movie.type}</span></p>
+            <p>Prodection Year :  <span>${movie.year} </span></p>
+            </div>
 
-        <img src="${movie.image}" >
-        <div class="home-text">
-            <span>${movie.type}</span>
-            <h1>${movie.name}</h1>
-            <a href="" class="btn">Book Now</a>
-        </div>
-    </div>`;
+            <div class="circular-progress" data-percentage="${movie.rating * 10}">
+             <span class="rating">${movie.rating * 10}%</span>
+            </div>
+
+              </div>
+        </div>`;
   });
   return html;
 }
+
 
 async function displayMoviesInHomeSection() {
   const container = document.querySelector('.js-home-continer');
@@ -60,6 +63,17 @@ async function displayMoviesInHomeSection() {
 
   await createMovieList(); // Populate the movieList before using it
   container.innerHTML = renderMoviesinHomeSection(); // Render movies
+}
+
+async function displayMoviesInMoviesSection() {
+  const container = document.querySelector('.imgs-container');
+  if (!container) {
+      return;
+  }
+
+  await createMovieList(); // Populate the movieList before using it
+  container.innerHTML = renderAllMoviesinSection(); // Render movies
+  setRatingInProgressPar(); // Now set the rating in progress bar after rendering
 }
 
 function displayAsSwiper() {
@@ -76,9 +90,18 @@ function displayAsSwiper() {
   });
 }
 
+function setRatingInProgressPar(){
+  document.querySelectorAll('.circular-progress').forEach(function(progressBar) {
+      const percentage = progressBar.getAttribute('data-percentage');
+      console.log('Setting percentage:', percentage, 'for', progressBar);
+      progressBar.style.setProperty('--percentage', percentage);
+  });
+}
+
 async function main() {
   await displayMoviesInHomeSection(); // Ensure movies are displayed before initializing Swiper
   displayAsSwiper();
+  await displayMoviesInMoviesSection(); 
 }
 
 main(); 

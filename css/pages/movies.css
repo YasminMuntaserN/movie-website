@@ -40,15 +40,25 @@
   position: absolute;
   left: 0;
   padding: 20px;
-  background-color: white;
+  background-color: rgb(0, 0, 0 ,0.7);
   width: 100%;
   transition: 0.3s;
   bottom: -100%;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  padding-right: 30px;
 }
+
 .movies-container .imgs-container .box .caption h4 {
   font-weight: normal;
   margin-bottom: 10px;
+  font-size: 32px;
 }
-.movies-container .imgs-container .box .caption p {
+.movies-container .imgs-container .box .caption p span {
   color: var(--main-color);
+}
+
+.circular-progress span{
+  font-size: 16px;
 }
