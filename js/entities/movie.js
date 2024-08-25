@@ -1,5 +1,11 @@
-class Movie {
-  id ,
+
+export class Movie {
+  id;
+  image;
+  name;
+  rating;
+  year;
+  story;
   
   constructor(id, name, image, year, rating, story) {
       this.id = id;

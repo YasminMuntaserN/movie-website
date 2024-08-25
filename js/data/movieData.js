@@ -7,23 +7,24 @@ const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 // Function to fetch movies
 async function fetchMovies(endpoint) {
-    const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`);
-    const data = await response.json();
-    return data.results;
+  const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`);
+  const data = await response.json();
+
+  // Clear the existing movie list
+  movieList = [];
+
+  data.results.forEach(movie => {
+      // Create a new Movie instance
+      const movie = new Movie(
+          movie.id, // id
+          movie.title,//name
+          `${IMAGE_BASE_URL}${movie.poster_path}`,//image
+          new Date(movie.release_date).getFullYear(),//Year of manufacture
+          movie.vote_average,// rate
+          movie.overview//description
+      );
+
+      // Add the movie instance to the list
+      movieList.push(movie);
+  });
 }
-
-// Fetch and display most-watched movies (popular movies)
-fetchMovies('/movie/popular').then(movies => {
-    renderMovies(movies.slice(0, 4), 'most-watched');
-});
-
-// Fetch and display all movies (you can customize the endpoint to get different lists)
-fetchMovies('/movie/now_playing').then(movies => {
-    renderMovies(movies, 'all-movies');
-});
-
-// Fetch and display newest films (sorted by release date)
-fetchMovies('/movie/now_playing').then(movies => {
-    movies.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
-    renderMovies(movies.slice(0, 4), 'newest-movies');
-});
