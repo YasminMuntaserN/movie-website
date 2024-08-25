@@ -1,3 +1,4 @@
+import {movie} from "../entities/movie.js";
 /* 
 I will get a set of movies from the TMDB (The Movie Database) API.
 */
