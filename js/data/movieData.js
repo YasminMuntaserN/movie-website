@@ -1,34 +1,50 @@
 import {Movie} from "../entities/movie.js";
 
-export let movieList = [];
+export let movieList =[];
 
 /* 
 I will get a set of movies from the TMDB (The Movie Database) API.
 */
-const API_KEY = 'a77c97c81d49467ec6bb4eda3c5bf7e8';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
+const apiKey = 'a77c97c81d49467ec6bb4eda3c5bf7e8';
+const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
-// Function to fetch movies
-export async function fetchMovies(endpoint) {
-  const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`);
+async function fetchMovies() {
+  const response = await fetch(apiUrl);
   const data = await response.json();
-
-  // Clear the existing movie list
-  movieList = [];
-
-  data.results.forEach(movie => {
-      // Create a new Movie instance
-      const movie = new Movie(
-          movie.id, // id
-          movie.title,//name
-          `${IMAGE_BASE_URL}${movie.poster_path}`,//image
-          new Date(movie.release_date).getFullYear(),//Year of manufacture
-          movie.vote_average,// rate
-          movie.overview//description
-      );
-
-      // Add the movie instance to the list
-      movieList.push(movie);
-  });
+  return data.results;
 }
+
+async function createMovieList() {
+  const moviesData = await fetchMovies();
+  const moviesList = [];
+
+  moviesData.forEach(movieData => {
+      // Example to classify movie types, could be based on genres or other logic
+      let movieType = getMovieType(movieData.genre_ids);
+      let movie = new Movie(
+          movieData.id,
+          movieData.title,
+          `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,
+          movieData.release_date.split("-")[0],
+          movieData.vote_average,
+          movieData.overview,
+          movieType
+      );
+      moviesList.push(movie);
+  });
+
+  // Now you have a list of movie objects
+  console.log(moviesList);
+  return moviesList;
+}
+
+function getMovieType(genreIds) {
+  // Example logic to determine movie type based on genre IDs
+  if (genreIds.includes(28)) return "Action";
+  if (genreIds.includes(10749)) return "Romantic";
+  if (genreIds.includes(878)) return "Science Fiction";
+  // Add more logic for other types or specific collections like Marvel Universe
+  return "Unknown";
+}
+
+movieList = createMovieList();
