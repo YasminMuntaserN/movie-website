@@ -2,25 +2,43 @@
 section{
   padding: 4.5rem 0 1.5rem;
 }
-.container{
+
+/* .container {
+  height: 100px;
   width: 100%;
-  min-height: 640px;
-  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
-  background: rgb(2, 3, 7,0.5);
+  overflow: hidden; /* Hide overflow if needed */
+ /* background: #f0f0f0;  Optional: background color */
+
+/*
+.container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Scale to fit while maintaining aspect ratio */
+
+  .container {
+    width: 100%;
+    min-height: 640px;
+    position: relative;
+    align-items: center;
+    background: rgb(2, 3, 7, 0.5);
 }
 
-
-.container img{
+.container img {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  right:5px;
+  width:60%; 
+  height: 600px;
+  margin-left: 300px;
+  object-fit:fill;
+  object-position:center;
   z-index: -1;
 }
+
 .swiper-pagination-bullet{
+  margin:30px;
   width: 6px !important;
   height: 6px !important;
   border-radius: 0.2rem !important;
@@ -31,6 +49,7 @@ section{
   width: 1.5rem !important;
   background: var(--main-color) !important;
 }
+
 .home-text{
   z-index: 1000;
   /* padding: 0 150px; */
@@ -61,7 +80,7 @@ section{
   color: var(--main-color);
 }
 .play .bx:hover{
-  background: var(--main-color);
+  background: var(--main-pxcolor);
   color: var(--bg-color);
   transition: 0.2s all linear;
 }
@@ -88,6 +107,7 @@ section{
   width: 100%;
   height: 270px;
   cursor: pointer;
+  
 }
 .box .box-img img{
   width: 100%;

@@ -1,4 +1,4 @@
-import {movieList} from "./data/movieData.js";
+import {movieList ,createMovieList} from "./data/movieData.js";
 
 
 // Function to render movies
@@ -8,13 +8,14 @@ function renderMoviesinHomeSection() {
 
     // Filter and sort movies by year, then take the first five
     const newMovies = movieList
-        .filter(movie => movie.year > 2024)
+        .filter(movie => movie.year > 2022 )
         .sort((a, b) => b.year - a.year)
-        .slice(0, 5); // Get only the first five movies
+        .slice(0, 10); // Get only the first five movies
 
-    newMovies.forEach(movie => {
+   newMovies.forEach(movie => {
     html+= ` 
       <div class="swiper-slide container ">
+
           <img src="${movie.image}" >
           <div class="home-text">
               <span>${movie.type}</span>
@@ -26,12 +27,39 @@ function renderMoviesinHomeSection() {
     return html;
 }
 
-function displayMoviesInHomeSection() {
-  const container = document.querySelector('js-home-continer');
+function renderAllMoviesinSection() {
+
+  let html = '';
+
+  // Filter and sort movies by year, then take the first five
+  const newMovies = movieList
+      .filter(movie => movie.year > 2022 )
+      .sort((a, b) => b.year - a.year)
+      .slice(0, 10); // Get only the first five movies
+
+ newMovies.forEach(movie => {
+  html+= ` 
+    <div class="swiper-slide container ">
+
+        <img src="${movie.image}" >
+        <div class="home-text">
+            <span>${movie.type}</span>
+            <h1>${movie.name}</h1>
+            <a href="" class="btn">Book Now</a>
+        </div>
+    </div>`;
+  });
+  return html;
+}
+
+async function displayMoviesInHomeSection() {
+  const container = document.querySelector('.js-home-continer');
   if (!container) {
-    return;
+      return;
   }
-  productGridElement.innerHTML = renderMoviesinHomeSection();
+
+  await createMovieList(); // Populate the movieList before using it
+  container.innerHTML = renderMoviesinHomeSection(); // Render movies
 }
 
 function displayAsSwiper() {
@@ -48,5 +76,9 @@ function displayAsSwiper() {
   });
 }
 
-displayAsSwiper();
-displayMoviesInHomeSection();
+async function main() {
+  await displayMoviesInHomeSection(); // Ensure movies are displayed before initializing Swiper
+  displayAsSwiper();
+}
+
+main(); 
