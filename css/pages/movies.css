@@ -1,0 +1,54 @@
+.heading{
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--main-color);
+}
+.movies-container .imgs-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+.movies-container .imgs-container .box {
+  overflow: hidden;
+  position: relative;
+}
+.movies-container .imgs-container .box:hover .caption {
+  bottom: 0;
+}
+.movies-container .imgs-container .box:hover img {
+  transform: rotate(3deg) scale(1.1);
+}
+@media (min-width: 768px) {
+  .movies-container .imgs-container .box {
+    flex-basis: 50%;
+  }
+}
+@media (min-width: 1199px) {
+  .movies-container .imgs-container .box {
+    flex-basis: 25%;
+  }
+}
+.movies-container .imgs-container .box img {
+  max-width: 100%;
+  transition: 0.3s;
+}
+.movies-container .imgs-container .box .caption {
+  position: absolute;
+  left: 0;
+  padding: 20px;
+  background-color: white;
+  width: 100%;
+  transition: 0.3s;
+  bottom: -100%;
+}
+.movies-container .imgs-container .box .caption h4 {
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+.movies-container .imgs-container .box .caption p {
+  color: var(--main-color);
+}
