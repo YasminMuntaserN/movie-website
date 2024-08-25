@@ -1,4 +1,7 @@
-import {movie} from "../entities/movie.js";
+import {Movie} from "../entities/movie.js";
+
+export let movieList = [];
+
 /* 
 I will get a set of movies from the TMDB (The Movie Database) API.
 */
@@ -7,7 +10,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 
 // Function to fetch movies
-async function fetchMovies(endpoint) {
+export async function fetchMovies(endpoint) {
   const response = await fetch(`${BASE_URL}${endpoint}?api_key=${API_KEY}`);
   const data = await response.json();
 
