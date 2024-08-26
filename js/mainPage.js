@@ -117,5 +117,4 @@ async function main() {
   displayAsSwiper();
   await displayMoviesInMoviesSection();
 }
-
 main();
