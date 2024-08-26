@@ -1,4 +1,3 @@
-
 export class Movie {
   id;
   posterImage;

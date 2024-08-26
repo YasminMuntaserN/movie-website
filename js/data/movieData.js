@@ -39,4 +39,11 @@ function getMovieType(genreIds) {
     return "Unknown";
 }
 
+export function getMovieById(id) {
+    movieList.forEach((movie) => { 
+    if(movie.id == id) return movie;
+    });
+return null;
+}
+
 

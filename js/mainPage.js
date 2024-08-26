@@ -34,7 +34,7 @@ function renderAllMoviesinSection() {
 
     movieList.slice(0, 30).forEach(movie => {
       html+= ` 
-     <div class="box">
+     <div class="box box-${movie.id}">
             <img src="${movie.posterImage}" alt="" />
 
             <div class="caption">
