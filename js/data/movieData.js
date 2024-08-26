@@ -21,7 +21,7 @@ export async function createMovieList() {
           movieData.id,
           movieData.title,
        `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,
-          movieData.release_date.split("-")[0],
+       new Date(movieData.release_date),
           movieData.vote_average,
           movieData.overview,
           movieType

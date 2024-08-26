@@ -4,29 +4,29 @@ import { Movie } from "./entities/movie.js";
 
 // Function to render movies
 function renderMoviesinHomeSection() {
+  let html = '';
 
-    let html = '';
+    // Shuffle the array to ensure randomness
+    const shuffledMovies = movieList.sort(() => 0.5 - Math.random());
+    
+    // Select the first 5 movies
+    const selectedMovies = shuffledMovies.slice(0, 5);
 
-    // Filter and sort movies by year, then take the first five
-    const newMovies = movieList
-        .filter(movie => movie.year > 2022 )
-        .sort((a, b) => b.year - a.year)
-        .slice(0, 5); // Get only the first five movies
+      selectedMovies.forEach((movie) => { 
+          html += ` 
+            <div class="swiper-slide container ">
+                <img src="${movie.image} srcset="high-res.jpg 2x, medium-res.jpg 1.5x"" >
+                <div class="home-text">
+                    <span>${movie.type}</span>
+                    <h1>${movie.name}</h1>
+                    <a href="" class="btn">Book Now</a>
+                </div>
+            </div>`;
+  });
 
-   newMovies.forEach(movie => {
-    html+= ` 
-      <div class="swiper-slide container ">
-
-          <img src="${movie.image}" >
-          <div class="home-text">
-              <span>${movie.type}</span>
-              <h1>${movie.name}</h1>
-              <a href="" class="btn">Book Now</a>
-          </div>
-      </div>`;
-    });
-    return html;
+  return html;
 }
+
 
 function renderAllMoviesinSection() {
 

@@ -4,15 +4,15 @@ export class Movie {
   image;
   name;
   rating;
-  year;
+  prodectionDate;
   story;
   type;
   
-  constructor(id, name, image, year, rating, story,type) {
+  constructor(id, name, image, prodectionDate, rating, story,type) {
       this.id = id;
       this.name = name;
       this.image = image;
-      this.year = year;
+      this.prodectionDate = prodectionDate;
       this.rating = rating;
       this.story = story;
       this.type = type;
