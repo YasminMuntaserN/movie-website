@@ -13,23 +13,45 @@ async function fetchMovies() {
 
 export async function createMovieList() {
     const moviesData = await fetchMovies();
-     movieList=[];
+    movieList = [];
+
     moviesData.forEach(movieData => {
-      // Example to classify movie types, could be based on genres or other logic
-      let movieType = getMovieType(movieData.genre_ids);
-      let movie = new Movie(
-          movieData.id,
-          movieData.title,
-          `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,  // Poster image
-          `https://image.tmdb.org/t/p/w1280${movieData.backdrop_path}`, // Backdrop image
-       new Date(movieData.release_date),
-          movieData.vote_average,
-          movieData.overview,
-          movieType
-      );
-      movieList.push(movie);
-  }); // Check the movies being fetched and created
-  return movieList;
+        // Example to classify movie types, could be based on genres or other logic
+        let movieType = getMovieType(movieData.genre_ids);
+
+        // Format the release date to exclude timezone
+        let releaseDate = new Date(movieData.release_date).toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+        });
+
+        // Format runtime in hours, minutes, and seconds
+        let runtime = movieData.runtime; // Assuming runtime is in minutes
+        let hours = Math.floor(runtime / 60);
+        let minutes = runtime % 60;
+        let formattedRuntime = `${hours}h ${minutes}m`;
+
+        let movie = new Movie(
+            movieData.id,
+            movieData.title,
+            `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,  // Poster image
+            `https://image.tmdb.org/t/p/w1280${movieData.backdrop_path}`, // Backdrop image
+            releaseDate,
+            movieData.vote_average,
+            movieData.overview,
+            movieType,
+            formattedRuntime // Adding formatted runtime
+        );
+
+        movieList.push(movie);
+    });
+
+    // Check the movies being fetched and created
+    return movieList;
 }
 
 function getMovieType(genreIds) {
