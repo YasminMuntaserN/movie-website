@@ -1,19 +1,10 @@
-import {movieList ,getMovieById ,createMovieList} from "./data/movieData.js";
+import {getMovieById ,createMovieList} from "./data/movieData.js";
 
 
 // Function to render movies
 function renderMovieInfo(movie) {
-  let html = '';
-
-    // Shuffle the array to ensure randomness
-    const shuffledMovies = movieList.sort(() => 0.5 - Math.random());
-    
-    // Select the first 5 movies
-    const selectedMovies = shuffledMovies.slice(0, 5);
-
-      selectedMovies.forEach((movie) => { 
-          html += ` 
-      <div class="Movie-Info" style="background-image: url('${movie.backdropImage}')">
+  return ` 
+      <div class="movie-info" style="background-image: url('${movie.backdropImage}')">
             <div class="imgs-container" >
                   <img src="${movie.backdropImage}">
             </div>
@@ -30,8 +21,6 @@ function renderMovieInfo(movie) {
                   <p class="description">${movie.story}</p>
             </div>
       </div>`;
-  });
-
   return html;
 }
 
@@ -43,6 +32,7 @@ async function displayMovieInfo() {
   
   await createMovieList(); // Populate the movieList before using it
   let movie =getMovieById(533535);
+  console.log(movie);
   container.innerHTML = renderMovieInfo(movie); // Render movie Info
 }
 

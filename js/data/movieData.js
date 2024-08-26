@@ -40,10 +40,14 @@ function getMovieType(genreIds) {
 }
 
 export function getMovieById(id) {
+    let selectedMovie='';
     movieList.forEach((movie) => { 
-    if(movie.id == id) return movie;
+    if(movie.id == id){
+        console.log(movie);
+        selectedMovie= movie;
+    }
     });
-return null;
+return selectedMovie;
 }
 
 

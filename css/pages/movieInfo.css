@@ -1,3 +1,10 @@
-.blurred{
-  background-image: linear-gradient(to right, rgba(31.5, 10.5, 10.5, 1) calc((50vw - 170px) - 340px), rgba(31.5, 10.5, 10.5, 0.84) 50%, rgba(31.5, 10.5, 10.5, 0.84) 100%);
+
+.movie-info{
+  width: 100%;
+  min-height: 640px;
+  border-bottom: 1px solid var(--primaryColor);
+  background-position: left calc((50vw - 170px) - 340px) top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
