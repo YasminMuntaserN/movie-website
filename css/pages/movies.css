@@ -6,6 +6,7 @@
   font-weight: 500;
   text-transform: uppercase;
   border-bottom: 1px solid var(--main-color);
+  padding-top: 30px;
 }
 .movies-container .imgs-container {
   display: flex;

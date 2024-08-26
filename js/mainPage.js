@@ -15,14 +15,12 @@ function renderMoviesinHomeSection() {
       selectedMovies.forEach((movie) => { 
           html += ` 
           <div class="swiper-slide container">
+              <img src="${movie.backdropImage}" alt="${movie.name}">
                 <div class="home-text">
                             <span>${movie.type}</span>
                             <h1>${movie.name}</h1>
                             <a href="" class="btn">Book Now</a>
                 </div>
-                <div class="image">
-                        <img src="${movie.backdropImage}" alt="${movie.name}">
-              </div>
                 </div>`;
   });
 
