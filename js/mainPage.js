@@ -72,12 +72,12 @@ async function displayMoviesInMoviesSection() {
   setRatingInProgressPar();
   addEventListenersToDisplayMovies();
 }
-
 // Function to add event listeners to display movies section
 function addEventListenersToDisplayMovies() {
   document.querySelectorAll('.box').forEach(box => {
     const movieId = box.getAttribute('data-id');
-    box.querySelector('.box').addEventListener('click', () => openMovieInfo(movieId));
+    // Attach the event listener directly to the box element
+    box.addEventListener('click', () => openMovieInfo(movieId));
   });
 }
 // Function to add event listeners to the home section
