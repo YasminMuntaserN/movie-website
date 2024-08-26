@@ -21,7 +21,7 @@ function renderMoviesinHomeSection() {
                             <a href="" class="btn">Book Now</a>
                 </div>
                 <div class="image">
-                        <img src="${movie.image}" alt="${movie.name}">
+                        <img src="${movie.backdropImage}" alt="${movie.name}">
               </div>
                 </div>`;
   });
@@ -37,7 +37,7 @@ function renderAllMoviesinSection() {
     movieList.slice(0, 30).forEach(movie => {
       html+= ` 
      <div class="box">
-            <img src="${movie.image}" alt="" />
+            <img src="${movie.posterImage}" alt="" />
 
             <div class="caption">
             <div class="mainInfo">

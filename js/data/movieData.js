@@ -20,7 +20,8 @@ export async function createMovieList() {
       let movie = new Movie(
           movieData.id,
           movieData.title,
-       `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,
+          `https://image.tmdb.org/t/p/w500${movieData.poster_path}`,  // Poster image
+          `https://image.tmdb.org/t/p/w1280${movieData.backdrop_path}`, // Backdrop image
        new Date(movieData.release_date),
           movieData.vote_average,
           movieData.overview,
