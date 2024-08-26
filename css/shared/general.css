@@ -14,12 +14,16 @@
   --main-color: #f2ee1f;
   --text-color: #020307;
   --bg-color: #fff;
-}
+  }
 body{
   background: var(--text-color);
   color: var(--bg-color);
+  font-family: 'Gabriela', serif;
 }
-
+p, div, span,button, input, li{
+  font-family: 'Gabriela', serif;
+  font-weight: 400; /* Regular weight for other text */
+}
 
 /*  Style the circular progress bar  */
 .circular-progress {

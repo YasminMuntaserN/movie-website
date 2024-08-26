@@ -49,6 +49,7 @@
   align-items:center;
   justify-content: space-between;
   padding-right: 30px;
+  font-family: 'Gabriela', serif;
 }
 
 .movies-container .imgs-container .box .caption h4 {
@@ -58,8 +59,10 @@
 }
 .movies-container .imgs-container .box .caption p span {
   color: var(--main-color);
+  font-family:'Gill Sans', 'Gill Sans MT';
 }
 
 .circular-progress span{
   font-size: 16px;
+  font-family:'Gill Sans', 'Gill Sans MT';
 }
