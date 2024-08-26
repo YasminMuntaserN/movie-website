@@ -8,14 +8,13 @@ function renderMovieInfo(movie) {
         background-size: cover;
         background-position: center; 
         background-repeat: no-repeat;" >
-        
+
             <div class="imgs-container" >
                   <img src="${movie.backdropImage}">
             </div>
 
             <div class="details">
                   <div>Rating : <span>${movie.rating}</span></div>
-                  <div>Time : <span>${movie.runtime}</span></div>
                   <div>prduction Show time : <span>${movie.prodectionDate}</span></div>
                   <div>price : <span>5$</span></div>
                   <button class="btn-BookNow">Book Now</button>
@@ -34,11 +33,24 @@ async function displayMovieInfo() {
   if (!container) {
       return;
   }
-  
-  await createMovieList(); // Populate the movieList before using it
-  let movie =getMovieById(718821);
-  console.log(movie);
-  container.innerHTML = renderMovieInfo(movie); // Render movie Info
+
+  // Extract movie ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const movieId = urlParams.get('id');
+
+  if (!movieId) {
+      console.log("No movie ID found in URL.");
+      return;
+  }
+
+  await createMovieList(); // Ensure movieList is populated before using it
+
+  const movie = getMovieById(movieId);
+  if (movie) {
+      container.innerHTML = renderMovieInfo(movie); // Render movie info
+  } else {
+      console.log("Movie not found.");
+  }
 }
 
 displayMovieInfo();

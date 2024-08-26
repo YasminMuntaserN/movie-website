@@ -7,9 +7,8 @@ export class Movie {
   prodectionDate;
   story;
   type;
-  runtime;
   
-  constructor(id, name, posterImage,backdropImage, prodectionDate, rating, story,type,runtime) {
+  constructor(id, name, posterImage,backdropImage, prodectionDate, rating, story,type) {
       this.id = id;
       this.name = name;
       this.posterImage = posterImage;
@@ -18,6 +17,5 @@ export class Movie {
       this.rating = rating;
       this.story = story;
       this.type = type;
-      this.runtime = runtime;
   }
 }

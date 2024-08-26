@@ -1,12 +1,13 @@
 .heading{
-  max-width: 968px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   font-weight: 500;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--main-color);
-  padding-top: 30px;
+  padding-left: 100px;
+  background-color: var(--main-color);
+  margin-bottom: -55px;
+  margin-top: 3px;
 }
 .movies-container .imgs-container {
   display: flex;

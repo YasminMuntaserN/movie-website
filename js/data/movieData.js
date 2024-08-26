@@ -12,28 +12,19 @@ async function fetchMovies() {
 }
 
 export async function createMovieList() {
-    const moviesData = await fetchMovies();
+    const moviesData = await fetchMovies(); // Fetch the list of movies
     movieList = [];
 
-    moviesData.forEach(movieData => {
-        // Example to classify movie types, could be based on genres or other logic
+    for (const movieData of moviesData) {
+        // classify movie types, could be based on genres or other logic
         let movieType = getMovieType(movieData.genre_ids);
 
         // Format the release date to exclude timezone
-        let releaseDate = new Date(movieData.release_date).toLocaleString('en-US', {
+        let releaseDate = new Date(movieData.release_date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
+            day: '2-digit'
         });
-
-        // Format runtime in hours, minutes, and seconds
-        let runtime = movieData.runtime; // Assuming runtime is in minutes
-        let hours = Math.floor(runtime / 60);
-        let minutes = runtime % 60;
-        let formattedRuntime = `${hours}h ${minutes}m`;
 
         let movie = new Movie(
             movieData.id,
@@ -43,16 +34,15 @@ export async function createMovieList() {
             releaseDate,
             movieData.vote_average,
             movieData.overview,
-            movieType,
-            formattedRuntime // Adding formatted runtime
+            movieType
         );
 
         movieList.push(movie);
-    });
+    }
 
-    // Check the movies being fetched and created
     return movieList;
 }
+
 
 function getMovieType(genreIds) {
     if (genreIds.includes(28)) return "Action";
