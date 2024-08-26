@@ -14,14 +14,16 @@ function renderMoviesinHomeSection() {
 
       selectedMovies.forEach((movie) => { 
           html += ` 
-            <div class="swiper-slide container ">
-                <img src="${movie.image} srcset="high-res.jpg 2x, medium-res.jpg 1.5x"" >
+          <div class="swiper-slide container">
                 <div class="home-text">
-                    <span>${movie.type}</span>
-                    <h1>${movie.name}</h1>
-                    <a href="" class="btn">Book Now</a>
+                            <span>${movie.type}</span>
+                            <h1>${movie.name}</h1>
+                            <a href="" class="btn">Book Now</a>
                 </div>
-            </div>`;
+                <div class="image">
+                        <img src="${movie.image}" alt="${movie.name}">
+              </div>
+                </div>`;
   });
 
   return html;
@@ -44,8 +46,8 @@ function renderAllMoviesinSection() {
             <p>Prodection Year :  <span>${movie.year} </span></p>
             </div>
 
-            <div class="circular-progress" data-percentage="${movie.rating * 10}">
-             <span class="rating">${movie.rating * 10}%</span>
+            <div class="circular-progress" data-percentage="${Math.round(movie.rating * 10)}">
+             <span class="rating">${Math.round(movie.rating * 10)}%</span>
             </div>
 
               </div>

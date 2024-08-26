@@ -26,20 +26,21 @@ body{
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: conic-gradient(var(--main-color), #dcdcdc calc(var(--percentage)* 1%));
+  background: conic-gradient(var(--main-color), #898986 calc(var(--percentage)* 1%));
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border: 5px solid #efefe7;
+  border: 5px solid var(--main-color);
 }
 
-/* .circular-progress {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--main-color) 75%, 
-      #dcdcdc 75%
-  );
-} */
+/* Start Animation */
+@keyframes up-and-down {
+  0%,
+  100% {
+    top: 0;
+  }
+  50% {
+    top: -50px;
+  }
+}
