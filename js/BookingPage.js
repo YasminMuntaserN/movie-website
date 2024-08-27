@@ -56,34 +56,29 @@ function getMovieIdFromURL() {
   return urlParams.get('id');
 }
 
-async function displayMovieInfoInMovieInfoBox() {
-  const container = document.querySelector('.container');
+async function displayAllBookings() {
+  const container = document.querySelector('.all-booked-movies-container');
   if (!container) {
-      return;
-  }
-
-  const movieId = getMovieIdFromURL();
-  const bookingId = getBookingIdFromURL();
-
-
-  if (!movieId && !bookingId) {
       return;
   }
 
   // Ensure movieList is populated before using it
   await createMovieList(); 
 
-  // Get the movie object by ID
-  const movie = getMovieById(movieId);
   const bookingData = new BookingData();
-  const booking =bookingData.getBookingById(bookingId);
-
-  console.log(movieId ,bookingId); 
-  if (movie && booking ) {
-      container.innerHTML = renderAllContent(booking,movie); // Render movie info
-  } else {
-      console.log(movie ,booking); 
+  const bookings = bookingData.getAllBookings();
+  
+  let content = '';
+  for (const booking of bookings) {
+      const movie = getMovieById(booking.movie.id);
+      if (movie) {
+          content += ` <div class="container">${renderAllContent(booking, movie)}</div>`;
+      }
   }
+
+  container.innerHTML = 
+  content;
 }
 
-displayMovieInfoInMovieInfoBox();
+// Call the function to display all bookings
+displayAllBookings();
