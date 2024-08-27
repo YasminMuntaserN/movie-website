@@ -23,7 +23,7 @@ header{
   margin: 30px;
   max-width: 600px;
 }
-.search-input {
+.search-bar{
   flex: 1;
   background-color: transparent;
   color: #fff;
@@ -33,7 +33,7 @@ header{
   box-shadow: 0 0 4px rgba(255, 209, 2, 0.3);
   font-size: 20px;
 }
-.btn-search {
+.submit {
   background: var(--main-color);
   padding: 8px 19px;
   font-size: 20px;
