@@ -1,5 +1,6 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
 import { BookingData } from './data/BookingData.js';
+export { attachSearchListener } from "search.js";
 
 // Function to render movie info in Booking page
 function renderMovieInfo(movie) {

@@ -83,3 +83,12 @@ export function getMovieById(id) {
     return movieList.find(movie => movie.id == id) || null;
 }
 
+// Function to get a movie by its name
+export function getMovieByName(movieName) {
+    // Normalize the search input to avoid case sensitivity issues
+    const normalizedSearchInput = movieName.toLowerCase();
+
+    // Find the movie that matches the given name
+    return movieList.find(movie => movie.name.toLowerCase() === normalizedSearchInput);
+}
+

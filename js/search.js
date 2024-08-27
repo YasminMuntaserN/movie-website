@@ -19,7 +19,7 @@ async function handleSearch(event) {
 
     if (movie) {
         // Redirect to the movie's detail page with the movie ID in the query string
-        window.location.href = `movieDetail.html?id=${movie.id}`;
+        window.location.href = `movieInfo.html?id=${movie.id}`;
     } else {
         alert('Movie not found.');
     }

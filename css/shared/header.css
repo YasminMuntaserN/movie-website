@@ -33,7 +33,7 @@ header{
   box-shadow: 0 0 4px rgba(255, 209, 2, 0.3);
   font-size: 20px;
 }
-.submit {
+.search-btn {
   background: var(--main-color);
   padding: 8px 19px;
   font-size: 20px;

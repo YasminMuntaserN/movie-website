@@ -1,5 +1,4 @@
 import { movieList, createMovieList } from "./data/movieData.js";
-export { attachSearchListener } from "./search.js";
 
 // Function to open movie info html page 
 function openMovieInfo(movieId) {
