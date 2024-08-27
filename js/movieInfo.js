@@ -1,27 +1,16 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
 
-function openBooking(movieId) {
-    console.log("movieId:", movieId); // Debugging
-
-    const movie = getMovieById(movieId);
-
-    if (movie) {
-        const currentDateTime = new Date();
-        console.log("currentDateTime:", currentDateTime); // Debugging
-        const movieShowTime = new Date(movie.showTime);
-        console.log("movieShowTime:", movieShowTime); // Debugging
-
-        if (currentDateTime > movieShowTime) {
-            alert(`The show date for "${movie.name}" has finished. You can wait for the next show date or try another movie.`);
-        } else {
-            window.location.href = `Booking.html?id=${movieId}`;
-        }
-    } else {
-        console.log("No movie found with the given ID.");
-    }
+ // Check if the showtime has not run out
+function isShowTimeValid(movie){
+    var options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const currentTime = new Date().toLocaleDateString('en-US', options);
+    const showTime = new Date(movie.prodectionDate).toLocaleDateString('en-US', options);;
+    console.log("Current Time:", currentTime);
+    console.log("Movie Show Time:", showTime);
+    const isShowTimeValid = currentTime < showTime;
 }
 
-// Function to render movies
+// Function to render movies with conditional payment method input
 function renderMovieInfo(movie) {
     return `
         <div class="movie-info" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${movie.backdropImage}');
@@ -37,7 +26,22 @@ function renderMovieInfo(movie) {
                 <div>Rating: <span>${movie.rating}</span></div>
                 <div>Production Show Time: <span>${movie.prodectionDate}</span></div>
                 <div>Price: <span>$5</span></div>
-                <button class="btn-BookNow" data-id="${movie.id}">Book Now</button>
+
+                
+                ${isShowTimeValid(movie) ? `
+                <div class="payment-method">
+                    <label for="payment">Select Payment Method:</label>
+                    <select id="payment">
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Cash">Cash</option>
+                    </select>
+                    <button class="btn-BookNow" data-id="${movie.id}">Book Now</button>
+                </div>
+                ` : `
+                <div class="showtime-expired">Showtime has passed, booking unavailable.</div>
+                `}
+
             </div>
 
             <div class="info">
@@ -47,7 +51,7 @@ function renderMovieInfo(movie) {
         </div>`;
 }
 
-// Function to display movie Info in Move Info section 
+// Function to display movie info in the Movie Info section
 async function displayMovieInfo() {
     const container = document.querySelector('.container');
     if (!container) {
@@ -63,20 +67,20 @@ async function displayMovieInfo() {
     }
 
     // Ensure movieList is populated before using it
-    await createMovieList(); 
+    await createMovieList();
 
     // Get the movie object by ID
     const movie = getMovieById(movieId);
-    console.log(movieId); 
+    console.log(movieId);
     if (movie) {
         container.innerHTML = renderMovieInfo(movie); // Render movie info
     } else {
-        console.log(movie); 
+        console.log(movie);
     }
     addEventListenersToBooking();
 }
 
-// Function to add event listeners to the Booking btn when click it,it will go to Booking page 
+// Function to add event listeners to the Booking button
 function addEventListenersToBooking() {
     const btn = document.querySelector('.btn-BookNow'); // Select the button correctly
     if (btn) {  // Ensure the button exists
@@ -87,4 +91,23 @@ function addEventListenersToBooking() {
     }
 }
 
+// Function to handle booking action and redirect to Booking page
+function openBooking(movieId) {
+    const paymentMethodSelect = document.getElementById('payment');
+    if (paymentMethodSelect) {
+        const selectedPaymentMethod = paymentMethodSelect.value;
+        console.log(`Booking movie with ID ${movieId} using ${selectedPaymentMethod}`);
+
+        // Proceed with booking logic
+        bookMovie(movieId, selectedPaymentMethod);
+
+        // Redirect to the movie info page with the movie ID in the query string
+        const url = `Booking.html?id=${movieId}`;
+        window.location.href = url;
+    } else {
+        alert('Showtime has passed. Booking unavailable.');
+    }
+}
+
+// Call the displayMovieInfo function to initiate the rendering process
 displayMovieInfo();

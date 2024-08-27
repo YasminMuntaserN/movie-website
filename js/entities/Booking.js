@@ -1,55 +1,66 @@
-export class Booking {
-  bookingId=1000;
-  static seatCounter = 50;  // Start seat numbers from 50
-  static bookings = [];  // To keep track of all bookings
+import { BookingData } from './bookingData.js';
 
-  constructor(bookingId, movie, bookingDate, price, paymentMethod) {
-    this.bookingId = bookingId;
-    this.movie = movie;  // Instance of the Movie class
-    this.bookingDate = bookingDate;
-    this.seatNumber = Booking.seatCounter++;  // Auto-increment seat number
-    this.price = price;
-    this.paymentMethod = this.validatePaymentMethod(paymentMethod);  // Ensure valid payment method
+export class Booking {
+    static seatCounter = 50;  // Start seat numbers from 50
+    bookingId;
+    movie;
+    bookingDate;
+    seatNumber;
+    price;
+    paymentMethod;
+
+    constructor(movie, price, paymentMethod) {
+      this.bookingId = generateGUID();  // Generate a unique booking ID using GUID
+      this.movie = movie;  // Instance of the Movie class
+      this.bookingDate = new Date();
+      this.seatNumber = Booking.seatCounter++;  // Auto-increment seat number
+      this.price = price;
+      this.paymentMethod = this.validatePaymentMethod(paymentMethod);  // Ensure valid payment method
   }
 
   // Method to validate payment method
   validatePaymentMethod(paymentMethod) {
-    const validMethods = ['Credit Card', 'PayPal', 'Apple Pay'];
-    if (validMethods.includes(paymentMethod)) {
-      return paymentMethod;
-    } else {
-      throw new Error(`Invalid payment method. Valid methods are: ${validMethods.join(', ')}`);
-    }
-  }
-
-  // Method to add a booking
-  static addBooking(movie, bookingDate, paymentMethod) {
-    const bookingId = Booking.bookings.length + 1;  // Simple booking ID generation
-    const price = Booking.generatePrice(movie.rating);  // Generate price based on movie rating
-    const newBooking = new Booking(bookingId, movie, bookingDate, price, paymentMethod);
-    Booking.bookings.push(newBooking);  // Add the booking to the list of bookings
-    return newBooking;
-  }
-
-  // Method to cancel a booking
-  static cancelBooking(bookingId) {
-    const index = Booking.bookings.findIndex(booking => booking.bookingId === bookingId);
-    if (index !== -1) {
-      const canceledBooking = Booking.bookings.splice(index, 1)[0];  // Remove the booking from the list
-      console.log(`Booking ID ${canceledBooking.bookingId} has been canceled.`);
-    } else {
-      console.log(`Booking ID ${bookingId} not found.`);
-    }
+      const validMethods = ['Credit Card', 'PayPal', 'cash'];
+      if (validMethods.includes(paymentMethod)) {
+          return paymentMethod;
+      } else {
+          throw new Error(`Invalid payment method. Valid methods are: ${validMethods.join(', ')}`);
+      }
   }
 
   // Method to generate price based on movie rating
   static generatePrice(rating) {
-    if (rating >= 8) {
-      return 15.00;  // Higher price for highly rated movies
-    } else if (rating >= 5) {
-      return 10.00;  // Mid-range price
-    } else {
-      return 7.50;   // Lower price for less popular movies
-    }
+      if (rating >= 8) {
+          return 15.00;  // Higher price for highly rated movies
+      } else if (rating >= 5) {
+          return 10.00;  // Mid-range price
+      } else {
+          return 7.50;   // Lower price for less popular movies
+      }
   }
+}
+
+function generateGUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0,
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+  });
+}
+
+function bookMovie(movieId, paymentMethod) {
+  // Create an instance of BookingData
+    const bookingData = new BookingData();
+
+    const movie = getMovieById(movieId);
+    if (movie) {
+        const price = Booking.generatePrice(movie.rating);
+        const newBooking = new Booking(movie, price, paymentMethod);
+        
+        bookingData.addBooking(newBooking);  // Add the booking using bookingData instance
+        
+        console.log('New Booking Created:', newBooking);
+    } else {
+        console.log('Movie not found.');
+    }
 }
