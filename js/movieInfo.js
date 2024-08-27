@@ -1,4 +1,6 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
+import {bookMovie} from "./entities/Booking.js";
+
 
  // Check if the showtime has not run out
 function isShowTimeValid(movie){

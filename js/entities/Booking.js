@@ -1,4 +1,6 @@
-import { BookingData } from './bookingData.js';
+import { BookingData } from '../data/BookingData.js';
+import {getMovieById } from "../data/movieData.js";
+
 
 export class Booking {
     static seatCounter = 50;  // Start seat numbers from 50
@@ -48,7 +50,7 @@ function generateGUID() {
   });
 }
 
-function bookMovie(movieId, paymentMethod) {
+export function bookMovie(movieId, paymentMethod) {
   // Create an instance of BookingData
     const bookingData = new BookingData();
 
