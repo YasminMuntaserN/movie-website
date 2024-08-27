@@ -51,8 +51,4 @@ async function displayMovieInfo() {
     } 
 }
 
-function main(){
 displayMovieInfo();
-}
-
-main();

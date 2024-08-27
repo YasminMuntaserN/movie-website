@@ -41,6 +41,7 @@ function renderAllMoviesinSection() {
           <h4>${movie.name}</h4>
           <p>Type: <span>${movie.type}</span></p>
           <p>Production Year: <span>${movie.year}</span></p>
+          <p>show Time: <span>${movie.showTime}</span></p>
         </div>
         <div class="circular-progress" data-percentage="${Math.round(movie.rating * 10)}">
           <span class="rating">${Math.round(movie.rating * 10)}%</span>
@@ -70,9 +71,9 @@ async function displayMoviesInMoviesSection() {
   await createMovieList();
   container.innerHTML = renderAllMoviesinSection();
   setRatingInProgressPar();
-  addEventListenersToDisplayMovies();
+   addEventListenersToDisplayMovie();
 }
-// Function to add event listeners to display movies section when click on spesific movie it will go to movie Info page 
+// Function to add event listeners to display movies section when click on specific movie it will go to movie Info page 
 function addEventListenersToDisplayMovie() {
   document.querySelectorAll('.box').forEach(box => {
     const movieId = box.getAttribute('data-id');

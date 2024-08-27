@@ -11,7 +11,7 @@ async function fetchMovies() {
     const data = await response.json();
     return data.results;
 }
-
+//create Movie List
 export async function createMovieList() {
     const moviesData = await fetchMovies(); // Fetch the list of movies
     movieList = [];
@@ -47,7 +47,6 @@ export async function createMovieList() {
 
     return movieList;
 }
-
 // Generate a random show time, which could be in the past or future
 function generateShowTime() {
     const now = new Date();
@@ -63,7 +62,6 @@ function generateShowTime() {
         hour12: true
     });
 }
-
 // Classify movie types
 function getMovieType(genreIds) {
     if (genreIds.includes(28)) return "Action";
@@ -71,7 +69,16 @@ function getMovieType(genreIds) {
     if (genreIds.includes(878)) return "Science Fiction";
     return "Unknown";
 }
-
+//get Movie By Id
 export function getMovieById(id) {
-    return movieList.find(movie => movie.id === id);
+    let retMovie = null;
+
+    for (const movie of movieList) {
+        if (movie.id === id) {
+            retMovie = movie;
+            break;  // Exit the loop once a match is found
+        }
+    }
+
+    return retMovie;
 }
