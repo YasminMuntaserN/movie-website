@@ -1,6 +1,6 @@
 import { movieList, createMovieList } from "./data/movieData.js";
 
-// Function to open movie info
+// Function to open movie info html page 
 function openMovieInfo(movieId) {
   const url = `movieInfo.html?id=${movieId}`;
   window.location.href = url;
@@ -9,7 +9,7 @@ function openMovieInfo(movieId) {
 // Function to render movies in the home section
 function renderMoviesinHomeSection() {
   let html = '';
-
+    // to get random movies for every thime the method called
   const shuffledMovies = movieList.sort(() => 0.5 - Math.random());
   const selectedMovies = shuffledMovies.slice(0, 5);
 
@@ -72,15 +72,16 @@ async function displayMoviesInMoviesSection() {
   setRatingInProgressPar();
   addEventListenersToDisplayMovies();
 }
-// Function to add event listeners to display movies section
-function addEventListenersToDisplayMovies() {
+// Function to add event listeners to display movies section when click on spesific movie it will go to movie Info page 
+function addEventListenersToDisplayMovie() {
   document.querySelectorAll('.box').forEach(box => {
     const movieId = box.getAttribute('data-id');
     // Attach the event listener directly to the box element
     box.addEventListener('click', () => openMovieInfo(movieId));
   });
 }
-// Function to add event listeners to the home section
+
+// Function to add event listeners to the home sectionwhen click on book btn it will go to movie Info page 
 function addEventListenersToHomeSection() {
   document.querySelectorAll('.swiper-slide').forEach(slide => {
     const movieId = slide.getAttribute('data-id');
