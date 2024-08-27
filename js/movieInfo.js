@@ -3,11 +3,13 @@ import {getMovieById ,createMovieList} from "./data/movieData.js";
  // Check if the showtime has not run out
 function isShowTimeValid(movie){
     var options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+
     const currentTime = new Date().toLocaleDateString('en-US', options);
-    const showTime = new Date(movie.prodectionDate).toLocaleDateString('en-US', options);;
+
+    const showTime = new Date(movie.showTime).toLocaleDateString('en-US', options);;
     console.log("Current Time:", currentTime);
     console.log("Movie Show Time:", showTime);
-    const isShowTimeValid = currentTime < showTime;
+    return  currentTime < showTime;
 }
 
 // Function to render movies with conditional payment method input

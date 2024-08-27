@@ -11,6 +11,7 @@ async function fetchMovies() {
     const data = await response.json();
     return data.results;
 }
+
 //create Movie List
 export async function createMovieList() {
     const moviesData = await fetchMovies(); // Fetch the list of movies
@@ -47,12 +48,18 @@ export async function createMovieList() {
 
     return movieList;
 }
-// Generate a random show time, which could be in the past or future
+
+// Generate a fixed show time within a range of +/- 7 days from today
 function generateShowTime() {
     const now = new Date();
-    const randomHours = Math.floor(Math.random() * 168) - 84; // Random time within +/- 7 days
-    const showTime = new Date(now.getTime() + randomHours * 60 * 60 * 1000);
-
+    
+    // Define the fixed offset (e.g., 3 days from now)
+    const fixedOffset = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+    
+    // Calculate the show time by adding the fixed offset to the current time
+    const showTime = new Date(now.getTime() + fixedOffset);
+    
+    // Format the show time to a readable string
     return showTime.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
@@ -62,6 +69,7 @@ function generateShowTime() {
         hour12: true
     });
 }
+
 // Classify movie types
 function getMovieType(genreIds) {
     if (genreIds.includes(28)) return "Action";
@@ -69,6 +77,7 @@ function getMovieType(genreIds) {
     if (genreIds.includes(878)) return "Science Fiction";
     return "Unknown";
 }
+
 //get Movie By Id
 export function getMovieById(id) {
     return movieList.find(movie => movie.id == id) || null;
