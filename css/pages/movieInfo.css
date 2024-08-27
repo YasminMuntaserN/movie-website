@@ -46,18 +46,25 @@
   font-family:'Gill Sans', 'Gill Sans MT';
 }
 
-.movie-info .details button{
-padding: 20px 25px;
+.movie-info .details button , .movie-info .details select{
+  padding: 12px 15px 12px 12px;
 background-color: var(--main-color);
 color: var(--bg-color);
 font-size: 20px;
-margin-top: 10px;
+margin: 10px;
 border-radius: 10px;
 border: none;
 box-shadow:rgb(27, 26, 26,0.5);
 cursor: pointer;
 }
+.movie-info .details select{
+  padding: 9px 15px 9px 15px;
+background-color: rgb(56, 55, 55);
+color: var(--main-color);
+display: block;
+margin-left: 0px;
 
+}
 .movie-info .info {
   flex: 2; /* Ensure it takes up more space for the title and story */
   margin-left: 20px;
