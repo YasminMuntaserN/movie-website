@@ -30,7 +30,7 @@ function renderMovieInfo(movie) {
             background-repeat: no-repeat;">
             
             <div class="imgs-container">
-                <img src="${movie.backdropImage}" alt="${movie.name}">
+                <img src="${movie.posterImage}" alt="${movie.name}">
             </div>
 
             <div class="details">

@@ -1,24 +1,24 @@
 /* Basic styling for the container */
 .container {
   display: flex;
-  justify-content: space-between;
   margin: 100px 150px 250px 250px;
   min-height: 400px;
+  justify-content: center;
 }
 
 /* Styling for the movie info div */
 .movie-info {
-  flex: 2;
+  /* flex: 2; */
   margin-right: 10px;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 30px;
   border-radius: 8px;
   /* background-color: #f9f9f9; */
 }
 
 .movie-info .movie-image {
-  width: 100%;
-  height: auto;
+  width: 400px;
+  height: 400px;
   border-radius: 8px;
 }
 
@@ -36,10 +36,10 @@
 
 /* Styling for the booking info div */
 .booking-info {
-  flex: 1;
+  /* flex: 1; */
   margin-left: 10px;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 50px;
   border-radius: 8px;
   /* background-color: #f9f9f9; */
 }
@@ -48,9 +48,16 @@
   font-size: 22px;
   margin-bottom: 10px;
   color: var(--main-color);
+  padding-bottom: 15px;
 }
 
 .booking-info p {
   font-size: 18px;
   margin: 5px 0;
+  padding-bottom: 10px;
+  color:#675e5e;
+}
+.booking-info p strong{
+  color:#ffffff;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
