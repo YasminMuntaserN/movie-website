@@ -3,18 +3,18 @@ import {getMovieById ,createMovieList} from "./data/movieData.js";
 // Function to render movie info in Booking page
 function renderBookingInfo(movie) {
   return `
-    <div class="movie-info">
-            <img src="${movie.posterImage}" class="movie-image">
+        <div class="movie-info">
+            <img src="${movie.posterImage}"  class="movie-image">
             <h1 class="movie-title">${movie.name}</h1>
-            <p class="movie-rating">Rating : ${movie.rating}</p>
-            <p class="movie-year">Year :     ${movie.prodectionDate}</p>
-        </div> 
+            <p class="movie-rating">Rating :  ${movie.rating}</p>
+            <p class="movie-year">Year :      ${movie.prodectionDate}</p>
+        </div>
       `;
   return html;
 }
 
 async function displayMovieInfoInMovieInfoBox() {
-  const container = document.querySelector('.container');
+  const container = document.querySelector('.movie-info-container');
   if (!container) {
       return;
   }
@@ -39,3 +39,5 @@ async function displayMovieInfoInMovieInfoBox() {
       console.log(movie); 
   }
 }
+
+displayMovieInfoInMovieInfoBox();

@@ -7,7 +7,9 @@ function openBooking(movieId) {
 
     if (movie) {
         const currentDateTime = new Date();
+        console.log("currentDateTime:", currentDateTime); // Debugging
         const movieShowTime = new Date(movie.showTime);
+        console.log("movieShowTime:", movieShowTime); // Debugging
 
         if (currentDateTime > movieShowTime) {
             alert(`The show date for "${movie.name}" has finished. You can wait for the next show date or try another movie.`);
