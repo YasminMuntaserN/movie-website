@@ -1,4 +1,5 @@
 import { movieList, createMovieList } from "./data/movieData.js";
+export { attachSearchListener } from "./search.js";
 
 // Function to open movie info html page 
 function openMovieInfo(movieId) {
@@ -32,7 +33,7 @@ function renderMoviesinHomeSection() {
 function renderAllMoviesinSection() {
   let html = '';
 
-  movieList.slice(0, 30).forEach(movie => {
+  movieList.forEach(movie => {
     html += ` 
     <div class="box box-${movie.id}" data-id="${movie.id}">
       <img src="${movie.posterImage}" alt="" />
@@ -40,7 +41,7 @@ function renderAllMoviesinSection() {
         <div class="mainInfo">
           <h4>${movie.name}</h4>
           <p>Type: <span>${movie.type}</span></p>
-          <p>Production Year: <span>${movie.year}</span></p>
+          <p>Production Year: <span>${movie.prodectionDate}</span></p>
           <p>show Time: <span>${movie.showTime}</span></p>
         </div>
         <div class="circular-progress" data-percentage="${Math.round(movie.rating * 10)}">

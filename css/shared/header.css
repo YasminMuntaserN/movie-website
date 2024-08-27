@@ -2,7 +2,7 @@
 header{
   position: fixed;
   width: 100%;
-  top: -50px;
+  top: -40px;
   right: 0;
   z-index: 1000;
 
@@ -10,8 +10,8 @@ header{
   align-items: center;
   justify-content: space-between;
 
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
   padding-top: 25px;
   transition: 0.5s;
   background-color: rgba(30, 29, 29, 0.7);
@@ -60,6 +60,7 @@ header.shadow .logo{
   color:var( --main-color);
   font-size: 50px;
   margin-right: -10px;
+  margin-left: -15px;
 }
 .bx{
   color: var(--main-color);
