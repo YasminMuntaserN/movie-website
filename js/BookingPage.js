@@ -31,7 +31,7 @@ function renderBookingInfo(Booking, movie) {
           minute: '2-digit',
           hour12: true
       })}</p>
-        <p><strong>Price : </strong>${Booking.price}</p>
+        <p><strong>Price : </strong>${Booking.price} $</p>
         <p><strong>Payment Method : </strong>${Booking.paymentMethod}</p>
         <p><strong>Show Time : </strong>${movie.showTime}</p>
         <button class="delete-book" booking-id="${Booking.bookingId}">

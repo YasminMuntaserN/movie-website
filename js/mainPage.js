@@ -122,4 +122,4 @@ async function main() {
   displayAsSwiper();
   await displayMoviesInMoviesSection();
 }
-document.addEventListener('DOMContentLoaded', main);
+  main();
