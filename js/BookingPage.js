@@ -4,8 +4,10 @@ import { BookingData } from './data/BookingData.js';
 // Function to render movie info in Booking page
 function renderMovieInfo(movie) {
   return `
-        <div class="movie-info">
-            <img src="${movie.posterImage}"  class="movie-image">
+        <div class="movie-info" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${movie.backdropImage}');
+            background-size: cover;
+            background-position: center; 
+            background-repeat: no-repeat;">
             <h1 class="movie-title">${movie.name}</h1>
             <p class="movie-rating">Rating :  ${movie.rating}</p>
             <p class="movie-year">Year :      ${movie.prodectionDate}</p>
@@ -15,50 +17,39 @@ function renderMovieInfo(movie) {
 }
 
 // Function to render Booking info in Booking page
-function renderBookingInfo(Booking,movie) {
+function renderBookingInfo(Booking, movie) {
   return `
-        <div class="booking-info">
-            <h2>Booking Information</h2>
-            <p><strong>Booking ID : </strong> ${Booking.bookingId}</p>
-            <p><strong>Booking Date : </strong> ${new Date(Booking.bookingDate).toLocaleTimeString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: '2-digit',
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: true
-          })}</p>
-            <p><strong>Price : </strong>${Booking.price}</p>
-            <p><strong>Payment Method : </strong>${Booking.paymentMethod}</p>
-            <p><strong>Show Time : </strong>${movie.showTime}</p>
-        </div>
-      `;
-  return html;
+    <div class="booking-info">
+        <h2>Booking Information</h2>
+        <p><strong>Booking ID : </strong> ${Booking.bookingId}</p>
+        <p><strong>Booking Date : </strong> ${new Date(Booking.bookingDate).toLocaleTimeString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+      })}</p>
+        <p><strong>Price : </strong>${Booking.price}</p>
+        <p><strong>Payment Method : </strong>${Booking.paymentMethod}</p>
+        <p><strong>Show Time : </strong>${movie.showTime}</p>
+        <button class="delete-book" booking-id="${Booking.bookingId}">
+          Cancel
+        </button>
+    </div>
+  `;
 }
 
-// Function to render Booking info and movie info in Booking page
-function renderAllContent(booking,movie ){
-  return  renderMovieInfo(movie)+
-  renderBookingInfo(booking,movie);
+// Function to render all content in the Booking page
+function renderAllContent(booking, movie) {
+  return renderMovieInfo(movie) + renderBookingInfo(booking, movie);
 }
 
-// Extract booking ID from URL parameters
-function getBookingIdFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams.get('bookingId'));
-  return urlParams.get('bookingId');
-}
-
-// Extract movie ID from URL parameters
-function getMovieIdFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  console.log(urlParams.get('id'));
-  return urlParams.get('id');
-}
-
+// Function to display all bookings
 async function displayAllBookings() {
   const container = document.querySelector('.all-booked-movies-container');
   if (!container) {
+      console.error('Container not found!');
       return;
   }
 
@@ -72,13 +63,42 @@ async function displayAllBookings() {
   for (const booking of bookings) {
       const movie = getMovieById(booking.movie.id);
       if (movie) {
-          content += ` <div class="container">${renderAllContent(booking, movie)}</div>`;
+          content += `<div class="container">${renderAllContent(booking, movie)}</div>`;
       }
   }
 
-  container.innerHTML = 
-  content;
+  container.innerHTML = content;
+
+  // Attach event listeners after content is rendered
+  addClickEventForDeleteItemInCart();
 }
 
-// Call the function to display all bookings
-displayAllBookings();
+// Function to add click event listeners to the delete buttons
+  function addClickEventForDeleteItemInCart() {
+  const buttons = document.querySelectorAll('.delete-book');
+  if (buttons.length === 0) {
+    console.error('No delete buttons found!');
+    return;
+  }
+
+  buttons.forEach((btn) => {
+    const bookingId = btn.getAttribute('booking-id');
+    console.log(`Attaching event listener to booking ID: ${bookingId}`);
+
+    btn.addEventListener('click', () => {
+      const bookingData = new BookingData();
+      console.log(`Canceling booking ID: ${bookingId}`);
+      bookingData.cancelBooking(bookingId);
+
+      // Re-render the bookings list after deletion
+      displayAllBookings();
+    });
+  });
+}
+
+// Main function to initialize the page
+function main() {
+  displayAllBookings();
+}
+
+main();

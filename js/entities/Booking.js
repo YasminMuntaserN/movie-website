@@ -74,9 +74,3 @@ export function bookMovie(movieId, paymentMethod) {
 
     return bookingId;
 }
-
-//   //get Booking By Id
-// export function getBookingById(id) {
-//   const bookingData = new BookingData();
-//       return bookingData.bookings.find(book => book.id == id) || null;
-//   }

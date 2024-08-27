@@ -16,6 +16,9 @@
   margin: 50px;
   flex: 1; /* Ensure it takes up available space */
   max-width: 400px;
+
+  display: flex;
+  align-items:center;
 }
 
 .movie-info .imgs-container img {
