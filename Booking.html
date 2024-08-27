@@ -2,22 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Movie Website</title>
-     <!--  CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking Page</title>
+      <!--  CSS -->
       <link rel="stylesheet" href="./css/shared/general.css">
       <link rel="stylesheet" href="./css/pages/header.css">
       <link rel="stylesheet" href="./css/pages/movieInfo.css">
       <link rel="stylesheet" href="./css/shared/media.css">
-
       <!-- Google Font Link -->
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Gabriela&family=Grandstander:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
-  <div class="main-container">
-  </div>
+      <!-- Navbar  -->
+      <header>
+        <a href="mainPage.html" class="logo">
+            <i class='bx bxs-movie'></i><span>N</span>ice
+        </a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <!--search bar-->
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Search for a movie">
+          <button class="btn-search">Search</button>
+        </div>
+        <!-- menu  -->
+        <ul class="navbar">
+            <li><a href="mainPage.html" class="home-active">Home</a></li>
+            <li><a href="mainPage.html">Movies</a></li>
+            <li><a href="#coming">Booking now</a></li>
+            <li><a href="#newsletter">contact</a></li>
+        </ul>
+    </header>
+    
+    <div class="container">
+        <!-- Movie Info Div -->
+        <div class="movie-info">
+            <img src="movie-image.jpg" alt="Movie Image" class="movie-image">
+            <h1 class="movie-title">Movie Title</h1>
+            <p class="movie-rating">Rating: 8.7</p>
+            <p class="movie-year">Year: 2023</p>
+        </div>
+        
+        <!-- Booking Info Div -->
+        <div class="booking-info">
+            <h2>Booking Information</h2>
+            <p><strong>Booking ID:</strong> 12345</p>
+            <p><strong>Booking Date:</strong> 2024-08-27</p>
+            <p><strong>Price:</strong> $12.00</p>
+            <p><strong>Payment Method:</strong> Credit Card</p>
+            <p><strong>Show Time:</strong> 7:00 PM</p>
+        </div>
+    </div>
 </body>
 </html>
+
