@@ -1,7 +1,7 @@
 /* Basic styling for the container */
 .container {
   display: flex;
-  margin: 100px 150px 250px 250px;
+  margin: 100px 30px -20px 100px;
   min-height: 400px;
   justify-content: center;
 }
@@ -17,8 +17,8 @@
 }
 
 .movie-info .movie-image {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 200px;
   border-radius: 8px;
 }
 
