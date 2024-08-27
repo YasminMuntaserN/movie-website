@@ -1,6 +1,6 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
 import {bookMovie} from "./entities/Booking.js";
-export { attachSearchListener } from "search.js";
+import { attachSearchListener } from './search.js';
 
  // Check if the showtime has not run out
 function isShowTimeValid(movie){
@@ -118,6 +118,9 @@ function openBooking(movieId) {
     }
 }
 
-
+function main() {
+attachSearchListener();
 // Call the displayMovieInfo function to initiate the rendering process
 displayMovieInfo();
+}
+main();

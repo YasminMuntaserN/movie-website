@@ -1,4 +1,5 @@
 import { movieList, createMovieList } from "./data/movieData.js";
+import { attachSearchListener } from './search.js';
 
 // Function to open movie info html page 
 function openMovieInfo(movieId) {
@@ -116,8 +117,9 @@ function displayAsSwiper() {
 
 // Main function to run on page load
 async function main() {
+  attachSearchListener();
   await displayMoviesInHomeSection();
   displayAsSwiper();
   await displayMoviesInMoviesSection();
 }
-main();
+document.addEventListener('DOMContentLoaded', main);

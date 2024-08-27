@@ -1,6 +1,5 @@
 import { BookingData } from '../data/BookingData.js';
 import {getMovieById } from "../data/movieData.js";
-export { attachSearchListener } from "./search.js";
 
 export class Booking {
     static seatCounter = 50;  // Start seat numbers from 50
