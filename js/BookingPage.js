@@ -1,3 +1,5 @@
+
+
 // Function to render movie info in Booking page
 function renderMovieInfo(movie) {
   return `

@@ -71,14 +71,6 @@ function getMovieType(genreIds) {
 }
 //get Movie By Id
 export function getMovieById(id) {
-    let retMovie = null;
-
-    for (const movie of movieList) {
-        if (movie.id === id) {
-            retMovie = movie;
-            break;  // Exit the loop once a match is found
-        }
-    }
-
-    return retMovie;
+    return movieList.find(movie => movie.id == id) || null;
 }
+
