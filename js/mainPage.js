@@ -73,6 +73,7 @@ async function displayMoviesInMoviesSection() {
   setRatingInProgressPar();
    addEventListenersToDisplayMovie();
 }
+
 // Function to add event listeners to display movies section when click on specific movie it will go to movie Info page 
 function addEventListenersToDisplayMovie() {
   document.querySelectorAll('.box').forEach(box => {
