@@ -1,0 +1,54 @@
+/* Basic styling for the container */
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  margin-top: 100px;
+}
+
+/* Styling for the movie info div */
+.movie-info {
+  flex: 1;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  /* background-color: #f9f9f9; */
+}
+
+.movie-info .movie-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-info .movie-title {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.movie-info .movie-rating,
+.movie-info .movie-year {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Styling for the booking info div */
+.booking-info {
+  flex: 1;
+  margin-left: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  /* background-color: #f9f9f9; */
+}
+
+.booking-info h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.booking-info p {
+  font-size: 18px;
+  margin: 5px 0;
+}
