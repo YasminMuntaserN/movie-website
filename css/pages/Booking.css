@@ -2,13 +2,13 @@
 .container {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
-  margin-top: 100px;
+  margin: 100px 150px 250px 250px;
+  min-height: 400px;
 }
 
 /* Styling for the movie info div */
 .movie-info {
-  flex: 1;
+  flex: 2;
   margin-right: 10px;
   border: 1px solid #ddd;
   padding: 10px;
@@ -25,6 +25,7 @@
 .movie-info .movie-title {
   font-size: 24px;
   margin: 10px 0;
+  color: var(--main-color);
 }
 
 .movie-info .movie-rating,
@@ -46,6 +47,7 @@
 .booking-info h2 {
   font-size: 22px;
   margin-bottom: 10px;
+  color: var(--main-color);
 }
 
 .booking-info p {
