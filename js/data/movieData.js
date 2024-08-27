@@ -1,6 +1,6 @@
 import { Movie } from "../entities/movie.js";
 
-export let movieList =[];
+export let movieList = [];
 
 const apiKey = 'a77c97c81d49467ec6bb4eda3c5bf7e8';
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
@@ -17,7 +17,7 @@ export async function createMovieList() {
     movieList = [];
 
     for (const movieData of moviesData) {
-        // classify movie types
+        // Classify movie types
         let movieType = getMovieType(movieData.genre_ids);
 
         // Format the release date to exclude timezone
@@ -27,6 +27,9 @@ export async function createMovieList() {
             day: '2-digit'
         });
 
+        // Generate a random showTime
+        let showTime = generateShowTime();
+
         let movie = new Movie(
             movieData.id,
             movieData.title,
@@ -35,7 +38,8 @@ export async function createMovieList() {
             releaseDate,
             movieData.vote_average,
             movieData.overview,
-            movieType
+            movieType,
+            showTime
         );
 
         movieList.push(movie);
@@ -44,7 +48,23 @@ export async function createMovieList() {
     return movieList;
 }
 
-// classify movie types
+// Generate a random show time, which could be in the past or future
+function generateShowTime() {
+    const now = new Date();
+    const randomHours = Math.floor(Math.random() * 168) - 84; // Random time within +/- 7 days
+    const showTime = new Date(now.getTime() + randomHours * 60 * 60 * 1000);
+
+    return showTime.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+    });
+}
+
+// Classify movie types
 function getMovieType(genreIds) {
     if (genreIds.includes(28)) return "Action";
     if (genreIds.includes(10749)) return "Romantic";
@@ -53,14 +73,5 @@ function getMovieType(genreIds) {
 }
 
 export function getMovieById(id) {
-    let selectedMovie='';
-    movieList.forEach((movie) => { 
-    if(movie.id == id){
-       // console.log(movie);
-        selectedMovie= movie;
-    }
-    });
-return selectedMovie;
+    return movieList.find(movie => movie.id === id);
 }
-
-
