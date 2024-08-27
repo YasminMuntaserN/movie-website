@@ -5,6 +5,7 @@ export let movieList =[];
 const apiKey = 'a77c97c81d49467ec6bb4eda3c5bf7e8';
 const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
+// Fetch the list of movies
 async function fetchMovies() {
     const response = await fetch(apiUrl);
     const data = await response.json();
@@ -16,7 +17,7 @@ export async function createMovieList() {
     movieList = [];
 
     for (const movieData of moviesData) {
-        // classify movie types, could be based on genres or other logic
+        // classify movie types
         let movieType = getMovieType(movieData.genre_ids);
 
         // Format the release date to exclude timezone
@@ -43,7 +44,7 @@ export async function createMovieList() {
     return movieList;
 }
 
-
+// classify movie types
 function getMovieType(genreIds) {
     if (genreIds.includes(28)) return "Action";
     if (genreIds.includes(10749)) return "Romantic";
@@ -55,7 +56,7 @@ export function getMovieById(id) {
     let selectedMovie='';
     movieList.forEach((movie) => { 
     if(movie.id == id){
-        console.log(movie);
+       // console.log(movie);
         selectedMovie= movie;
     }
     });

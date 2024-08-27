@@ -5,16 +5,17 @@ header{
   top: -50px;
   right: 0;
   z-index: 1000;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 25px;
   transition: 0.5s;
   background-color: rgba(30, 29, 29, 0.7);
 }
-
 .search-container {
   flex: 1;
   display: flex;
@@ -22,7 +23,6 @@ header{
   margin: 30px;
   max-width: 600px;
 }
-
 .search-input {
   flex: 1;
   background-color: transparent;
@@ -33,7 +33,6 @@ header{
   box-shadow: 0 0 4px rgba(255, 209, 2, 0.3);
   font-size: 20px;
 }
-
 .btn-search {
   background: var(--main-color);
   padding: 8px 19px;
@@ -49,7 +48,6 @@ header.shadow .navbar a{
 header.shadow .logo{
   color: var(--text-color);
 }
-
 .logo{
   font-size: 25px;
   font-weight: 600;
