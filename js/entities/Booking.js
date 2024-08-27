@@ -11,8 +11,8 @@ export class Booking {
     price;
     paymentMethod;
 
-    constructor(movie, price, paymentMethod) {
-      this.bookingId = generateGUID();  // Generate a unique booking ID using GUID
+    constructor(bookingId,movie, price, paymentMethod) {
+      this.bookingId = bookingId;  // Generate a unique booking ID using GUID
       this.movie = movie;  // Instance of the Movie class
       this.bookingDate = new Date();
       this.seatNumber = Booking.seatCounter++;  // Auto-increment seat number
@@ -53,16 +53,23 @@ function generateGUID() {
 export function bookMovie(movieId, paymentMethod) {
   // Create an instance of BookingData
     const bookingData = new BookingData();
-
+    let bookingId ='';
     const movie = getMovieById(movieId);
     if (movie) {
+       // Generate a unique booking ID (GUID or similar)
+        bookingId = generateGUID(); // Ensure you have a function to generate unique IDs
+
         const price = Booking.generatePrice(movie.rating);
-        const newBooking = new Booking(movie, price, paymentMethod);
+        
+        const newBooking = new Booking(
+          bookingId,
+          movie, price, paymentMethod);
         
         bookingData.addBooking(newBooking);  // Add the booking using bookingData instance
-        
         console.log('New Booking Created:', newBooking);
     } else {
         console.log('Movie not found.');
     }
+
+    return bookingId;
 }

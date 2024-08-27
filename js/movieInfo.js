@@ -95,23 +95,29 @@ function addEventListenersToBooking() {
     }
 }
 
+function getPaymentMethod(){
+    const paymentMethodSelect = document.getElementById('payment');
+        const selectedPaymentMethod = paymentMethodSelect.value;
+
+        return selectedPaymentMethod;
+}
+
 // Function to handle booking action and redirect to Booking page
 function openBooking(movieId) {
-    const paymentMethodSelect = document.getElementById('payment');
-    if (paymentMethodSelect) {
-        const selectedPaymentMethod = paymentMethodSelect.value;
-        console.log(`Booking movie with ID ${movieId} using ${selectedPaymentMethod}`);
+    const selectedPaymentMethod = getPaymentMethod();
 
-        // Proceed with booking logic
-        bookMovie(movieId, selectedPaymentMethod);
+    // Proceed with booking logic
+    const bookingId = bookMovie(movieId, selectedPaymentMethod);
 
-        // Redirect to the movie info page with the movie ID in the query string
-        const url = `Booking.html?id=${movieId}`;
+    // Redirect to the Booking page with the movie ID and booking ID in the query string
+    if (bookingId) {
+        const url = `Booking.html?id=${movieId}&bookingId=${bookingId}`;
         window.location.href = url;
     } else {
-        alert('Showtime has passed. Booking unavailable.');
+        alert('Booking failed. Please try again.');
     }
 }
+
 
 // Call the displayMovieInfo function to initiate the rendering process
 displayMovieInfo();
