@@ -14,7 +14,7 @@ export class Booking {
     constructor(bookingId,movie, price, paymentMethod) {
       this.bookingId = bookingId;  // Generate a unique booking ID using GUID
       this.movie = movie;  // Instance of the Movie class
-      this.bookingDate = new Date();
+      this.bookingDate =new Date();
       this.seatNumber = Booking.seatCounter++;  // Auto-increment seat number
       this.price = price;
       this.paymentMethod = this.validatePaymentMethod(paymentMethod);  // Ensure valid payment method
@@ -50,9 +50,10 @@ function generateGUID() {
   });
 }
 
+
 export function bookMovie(movieId, paymentMethod) {
+  const bookingData = new BookingData();
   // Create an instance of BookingData
-    const bookingData = new BookingData();
     let bookingId ='';
     const movie = getMovieById(movieId);
     if (movie) {
@@ -73,3 +74,9 @@ export function bookMovie(movieId, paymentMethod) {
 
     return bookingId;
 }
+
+//   //get Booking By Id
+// export function getBookingById(id) {
+//   const bookingData = new BookingData();
+//       return bookingData.bookings.find(book => book.id == id) || null;
+//   }

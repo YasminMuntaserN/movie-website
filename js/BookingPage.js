@@ -1,4 +1,5 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
+import { BookingData } from './data/BookingData.js';
 
 // Function to render movie info in Booking page
 function renderMovieInfo(movie) {
@@ -19,7 +20,14 @@ function renderBookingInfo(Booking,movie) {
         <div class="booking-info">
             <h2>Booking Information</h2>
             <p><strong>Booking ID : </strong> ${Booking.bookingId}</p>
-            <p><strong>Booking Date : </strong> ${Booking.bookingDate}</p>
+            <p><strong>Booking Date : </strong> ${new Date(Booking.bookingDate).toLocaleTimeString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true
+          })}</p>
             <p><strong>Price : </strong>${Booking.price}</p>
             <p><strong>Payment Method : </strong>${Booking.paymentMethod}</p>
             <p><strong>Show Time : </strong>${movie.showTime}</p>
@@ -30,7 +38,7 @@ function renderBookingInfo(Booking,movie) {
 
 // Function to render Booking info and movie info in Booking page
 function renderAllContent(booking,movie ){
- return  renderMovieInfo(movie)+
+  return  renderMovieInfo(movie)+
   renderBookingInfo(booking,movie);
 }
 
@@ -67,11 +75,14 @@ async function displayMovieInfoInMovieInfoBox() {
 
   // Get the movie object by ID
   const movie = getMovieById(movieId);
-  console.log(movieId); 
-  if (movie) {
-      container.innerHTML = renderAllContent(bookingId,movie); // Render movie info
+  const bookingData = new BookingData();
+  const booking =bookingData.getBookingById(bookingId);
+
+  console.log(movieId ,bookingId); 
+  if (movie && booking ) {
+      container.innerHTML = renderAllContent(booking,movie); // Render movie info
   } else {
-      console.log(movie); 
+      console.log(movie ,booking); 
   }
 }
 
