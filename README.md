@@ -11,7 +11,7 @@ Welcome to the **Small Cinema Website**, a responsive and interactive site that 
 
 ## 🚀 Live Demo
 
-Experience the website live by visiting [this link](#).
+Experience the website live by visiting [this link](https://precious-brioche-7cdc55.netlify.app).
 
 ## 📺 Demo Video
 
