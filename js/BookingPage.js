@@ -1,6 +1,6 @@
 import {getMovieById ,createMovieList} from "./data/movieData.js";
 import { BookingData } from './data/BookingData.js';
-import { attachSearchListener ,toggleWithMainMenu } from './search.js';
+import { attachSearchListener } from './search.js';
 
 // Function to render movie info in Booking page
 function renderMovieInfo(movie) {
@@ -101,7 +101,6 @@ async function displayAllBookings() {
 function main() {
   attachSearchListener();
   displayAllBookings();
-  toggleWithMainMenu();
 }
 
 main();

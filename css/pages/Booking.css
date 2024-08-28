@@ -58,7 +58,7 @@
 .delete-book{
   padding: 12px 15px 12px 12px;
   background-color: var(--main-color);
-  color: var(--bg-color);
+  color: rgb(64, 63, 63);
   font-size: 20px;
   margin: 10px;
   border-radius: 10px;
