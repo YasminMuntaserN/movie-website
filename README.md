@@ -19,7 +19,7 @@ Watch a short demo of the site in action: [Demo Video](https://precious-brioche-
 
 ## 🖼️ Screenshot
 
-![Small Cinema Website Screenshot](#)
+![Small Cinema Website Screenshot](https://imgur.com/MsmTZJL.jpg)
 
 ## 📖 How It Works
 
