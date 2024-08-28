@@ -120,7 +120,6 @@ function openBooking(movieId) {
 
 function main() {
 attachSearchListener();
-// Call the displayMovieInfo function to initiate the rendering process
 displayMovieInfo();
 }
 main();
