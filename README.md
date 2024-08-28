@@ -15,7 +15,7 @@ Experience the website live by visiting [this link](#).
 
 ## 📺 Demo Video
 
-Watch a short demo of the site in action: [Demo Video](#).
+Watch a short demo of the site in action: [Demo Video](#https://precious-brioche-7cdc55.netlify.app/).
 
 ## 🖼️ Screenshot
 
