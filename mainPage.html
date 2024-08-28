@@ -8,8 +8,6 @@
       <link rel="stylesheet" href="./css/shared/header.css">
       <link rel="stylesheet" href="./css/pages/home.css">
       <link rel="stylesheet" href="./css/pages/movies.css">
-      <link rel="stylesheet" href="./css/shared/media.css">
-
 
         <!-- Swiper CSS -->
       <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -25,17 +23,27 @@
       <a href="mainPage.html" class="logo">
           <i class='bx bxs-movie'></i><span>N</span>ice
       </a>
-      <div class="bx bx-menu" id="menu-icon"></div>
+
+      
       <!--search bar-->
       <div class="search-container">
         <input type="text" class="search-bar" placeholder="Search for a movie...">
         <button type="submit" class="search-btn">Search</button>
       </div>
-      <!-- menu  -->
+   
+      <!-- Hidden checkbox for the menu toggle -->
+    <input type="checkbox" id="menu-toggle">
+    
+    <!-- Menu icon -->
+    <!-- Menu icon with hover effect -->
+    <div class="img-menu" id="menu-icon">
+      <img src="imgs/dashboard.png" alt="Menu">
+  </div>
+
       <ul class="navbar">
           <li><a href="mainPage.html" class="home-active">Home</a></li>
           <li><a href="#movies">Movies</a></li>
-          <li><a href="Booking.html">Booking now</a></li>
+          <li><a href="Booking.html">Booking Movies</a></li>
       </ul>
   </header>
 

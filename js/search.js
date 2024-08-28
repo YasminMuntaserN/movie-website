@@ -1,4 +1,4 @@
-import {getMovieByName, movieList, createMovieList } from "./data/movieData.js";
+import {getMovieByName,  createMovieList } from "./data/movieData.js";
 
 // Function to handle search when the button is clicked or Enter is pressed
 async function handleSearch(event) {
