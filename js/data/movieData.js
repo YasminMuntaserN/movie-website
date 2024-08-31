@@ -21,7 +21,7 @@ export async function createMovieList() {
         // Classify movie types
         let movieType = getMovieType(movieData.genre_ids);
 
-        // Format the release date to exclude timezone
+        // Format the release date
         let releaseDate = new Date(movieData.release_date).toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'short',
@@ -53,13 +53,12 @@ export async function createMovieList() {
 function generateShowTime() {
     const now = new Date();
     
-    // Define the fixed offset (e.g., 3 days from now)
-    const fixedOffset = 3 * 24 * 60 * 60 * 1000; // 3 days in milliseconds
+    const fixedOffset = 3 * 24 * 60 * 60 * 1000; 
     
     // Calculate the show time by adding the fixed offset to the current time
     const showTime = new Date(now.getTime() + fixedOffset);
     
-    // Format the show time to a readable string
+    // Format the show time
     return showTime.toLocaleString('en-US', {
         year: 'numeric',
         month: 'short',
@@ -85,10 +84,6 @@ export function getMovieById(id) {
 
 // Function to get a movie by its name
 export function getMovieByName(movieName) {
-    // Normalize the search input to avoid case sensitivity issues
-    const normalizedSearchInput = movieName.toLowerCase();
-
-    // Find the movie that matches the given name
-    return movieList.find(movie => movie.name.toLowerCase() === normalizedSearchInput);
+    return movieList.find(movie => movie.name.toLowerCase() === movieName.toLowerCase());
 }
 

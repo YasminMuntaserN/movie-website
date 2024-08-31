@@ -72,7 +72,7 @@ async function displayMoviesInMoviesSection() {
   await createMovieList();
   container.innerHTML = renderAllMoviesinSection();
   setRatingInProgressPar();
-   addEventListenersToDisplayMovie();
+  addEventListenersToDisplayMovie();
 }
 
 // Function to add event listeners to display movies section when click on specific movie it will go to movie Info page 

@@ -106,7 +106,7 @@ function getPaymentMethod(){
 function openBooking(movieId) {
     const selectedPaymentMethod = getPaymentMethod();
 
-    // Proceed with booking logic
+    // create a new Booking 
     const bookingId = bookMovie(movieId, selectedPaymentMethod);
 
     // Redirect to the Booking page with the movie ID and booking ID in the query string
