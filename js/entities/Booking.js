@@ -3,12 +3,8 @@ import {getMovieById } from "../data/movieData.js";
 
 export class Booking {
     static seatCounter = 50;  // Start seat numbers from 50
-    bookingId;
-    movie;
     bookingDate;
     seatNumber;
-    price;
-    paymentMethod;
 
     constructor(bookingId,movie, price, paymentMethod) {
         this.bookingId = bookingId;  // Generate a unique booking ID using GUID
@@ -56,7 +52,7 @@ export class Booking {
         let bookingId ='';
         const movie = getMovieById(movieId);
         if (movie) {
-        // Generate a unique booking ID (GUID or similar)
+        // Generate a unique booking ID 
             bookingId = generateGUID(); 
 
             const price = Booking.generatePrice(movie.rating);
@@ -66,10 +62,7 @@ export class Booking {
             movie, price, paymentMethod);
             
             bookingData.addBooking(newBooking); 
-            console.log('New Booking Created:', newBooking);
-        } else {
-            console.log('Movie not found.');
-        }
+            }
 
         return bookingId;
     }
