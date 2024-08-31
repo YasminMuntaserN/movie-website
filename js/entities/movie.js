@@ -1,14 +1,4 @@
 export class Movie {
-  id;
-  posterImage;
-  backdropImage;
-  name;
-  rating;
-  prodectionDate;
-  story;
-  type;
-  showTime;
-
   constructor(id, name, posterImage, backdropImage, prodectionDate, rating, story, type, showTime) {
       this.id = id;
       this.name = name;
